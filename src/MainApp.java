@@ -1,3 +1,5 @@
+
+
 import java.sql.SQLException;
 
 public class MainApp {
@@ -7,6 +9,8 @@ public class MainApp {
 
 
 		EtudiantService serv=new EtudiantService();
+		
+		AfficheMulti j=new AfficheDate();
 		try {
 			serv.inscription(2, "Guendouziiiii", "wassila", "guen@gmail.com","xxxx", 1);
 			
