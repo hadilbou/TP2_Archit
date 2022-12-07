@@ -15,21 +15,7 @@ public class EtudiantService {
 	    
 	    System.out.println("Log: début de l'opération d'ajout de l'étudiant avec matricule "+matricule);
 	    
-	    if(email == null || email.length() == 0)
-	    {
-	    	return false;
-	    }    
-	    
-	    if (StudRep.Exists(matricule))
-	    {
-	        return false;
-	    }
-	    
-		if (StudRep.Exists(email))
-	    {
-	        return false;
-	    }
-		
+	  
 		
 		
 		 if (univ.getPack() == TypePackage.Standard)
