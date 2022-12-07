@@ -55,6 +55,7 @@ public class Etudiant {
 
 
 		public String getEmail() {
+			
 			return email;
 		}
 
@@ -103,6 +104,8 @@ public class Etudiant {
 			this.pwd = pwd;
 		}
 
-		
+		public void bonus(int bonus) {
+			nbLivreMensuel_Autorise= nbLivreMensuel_Autorise+ bonus;
+		}
 		
 	    }

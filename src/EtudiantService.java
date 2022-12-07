@@ -5,6 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 public class EtudiantService {
 	
+	IJournal journal;
 	
 	boolean inscription (int matricule, String nom, String prénom, String email,String pwd, int id_universite) throws SQLException	
 	{
@@ -13,9 +14,23 @@ public class EtudiantService {
 	    Etudiant stud = new Etudiant(matricule, nom, prénom, email,pwd,id_universite);
 	    Universite univ=UnivRep.GetById(id_universite);
 	    
-	    System.out.println("Log: début de l'opération d'ajout de l'étudiant avec matricule "+matricule);
+	    journal.outPut_Msg("Log: début de l'opération d'ajout de l'étudiant avec matricule "+matricule);
 	    
-	  
+	    if(email == null || email.length() == 0)
+	    {
+	    	return false;
+	    }    
+	    
+	    if (StudRep.Exists(matricule))
+	    {
+	        return false;
+	    }
+	    
+		if (StudRep.Exists(email))
+	    {
+	        return false;
+	    }
+		
 		
 		
 		 if (univ.getPack() == TypePackage.Standard)
@@ -28,13 +43,19 @@ public class EtudiantService {
 	     }                           
 	     
 		 StudRep.add(stud);
-		 System.out.println("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+matricule);
+		 journal.outPut_Msg("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+matricule);
 		 return true;
 	    
 		
 	}
 	
-	
+	public void AjoutBonus(Etudiant stud,Universite univ  ) {
+		if (univ.getPack() == TypePackage.Standard) {
+			stud.bonus(5);
+		}
+		else if (univ.getPack() == TypePackage.Premium)
+	     {stud.bonus(10);}
+	}
 	
 
 public ArrayList<Etudiant> GetEtudiantParUniversitye()

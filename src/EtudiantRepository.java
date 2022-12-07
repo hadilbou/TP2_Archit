@@ -44,7 +44,9 @@ public class EtudiantRepository {
 			}
 		journal.outPut_Msg("logBD--- : email n'existe pas " + email);	
 		connect.close();
+		
 		return false;
+		  
 	}
 	
 	boolean Exists(int mat) throws SQLException	
