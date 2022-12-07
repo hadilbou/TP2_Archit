@@ -19,10 +19,12 @@ public class Etudiant {
 			this.email = email;
 			this.pwd = pwd;
 			this.id_universite = id_universite;
+			
 		}
 
 
 		public int getMatricule() {
+			
 			return matricule;
 		}
 
